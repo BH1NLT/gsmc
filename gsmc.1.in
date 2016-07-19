@@ -22,7 +22,8 @@ Calculation procedure starts with setting the initial impedance to be
 matched, next network elements are added and tuned to obtain the
 desidered impedance value.
 
-The network so obtained can be saved in spice format for other analisys.
+The network so obtained can be saved in spice format for other analisys;
+current work can be saved for succesive retrieve.
 
 The initial (start) impedance is thought as "the load" so when
 adding a trasmission line placed as a quadrupole rotation is
@@ -131,10 +132,32 @@ Change first field of currently highlighted element
 .IP "Mod+="
 Change second field of currently highlighted element
 
+.IP "Ctrl+a"
+Start autotune procedure (tune goal is characteristic impedance)
 
-Check online keystroke for an updated list of commands.
+.IP "Ctrl+x"
+Toggle lock flag in autotune procedure
+
+.IP "Ctrl+p"
+Write an EPS or PS file
+
+.IP "Ctrl+l"
+Load a previously saved .B gsmc
+job
+
+.IP "Ctrl+l"
+Save a .B gsmc
+job
+
+.IP "Ctrl+f"
+Increase frequency
+
+.IP "Shift+Ctrl+f"
+Decrease frequency
 
 .RE
+Check online keystroke for an updated list of commands.
+
 .B "DIALOG WIN"
 
 For operation that requires data entry a widget is created; it is
@@ -204,7 +227,7 @@ The portion in the lower right portion, for future use...
 
 .SH EXAMPLE OF USE
 Let's try a simple example to understand how
-.B xsmc
+.B gsmc
 work. Suppose to have a load of 10-j35ohm to be matched to 50+j0ohm at
 an operating frequency of 15.5MHz and we can use only concentrated
 reactive elements, i.e. inductances and capacitors.
@@ -266,10 +289,13 @@ former can be adjusted with Shift+Cursor left/rigth as for resistor,
 inductance and capacitor; the latter can be adjusted with Mod+cursor
 left/right.
 
-Now the network can be saved pressing Ctrl+w: actually only spice format
-is supported. The file so generated can be now analized with a spice
-simulator or
+Now the network can be saved either in a
+.B gsmc
+format (.gdt extension) by pressing Ctrl+s or in spice format pressing
+Ctrl+w:  The file so generated can be now analized with a spice simulator or
 .B gnucap
+or
+.B ngspice
 ; maybe you are interested in simulating it sweeping arround 15.5MHz,
 so modify the line
 
@@ -283,6 +309,18 @@ and run spice or
 .B gnucap
 .
 
+This example should be included in gsmc package an can be retreived by
+pressing Ctrl+l and selecting example1.gdt.
+
+Autotune algorithm is very primitive and may not reach what is very simple
+to do by hand, do not ask to much from it, work in progress...
+
+Charts so drawed can be printed to a Postscript or Encapsulated Postscript
+file; in printed file some information are added on the chart drawing as well
+as Circuit Description and some of the Current Value are transcripted.
+Automatic recognition of filename extension .eps or .ps allow to specify
+if the file has to be in encapsulated format or not.
+
 .SH FILES
 .B gsmc
 don't use special configuration file, a gtkrc file is supplied and can
@@ -290,6 +328,11 @@ be tuned to user preferences; if present it must be in /root/.gsmc/gtkrc.
 File describing the network currently analized can be generated, it's
 only needed that a minimum file permission is allowed, if not the
 program will work but data could not be saved.
+
+Data file (.gdt) contain a copy of internal data structures in a quite 
+human readable format; by inspection one can recognize and modify some
+parts using a text editor. For more details compare a .gdt file with 
+smcdata struct defined in source file main.h.
 
 .SH LIMITATIONS
 Porting can be very very difficult, since all is based on X windows
@@ -300,6 +343,9 @@ similar program are available, free and good one too.
 Help me to find.
 
 .SH TODO
+
+.B \(bu
+Improve autotune algorithm
 
 .B \(bu
 Target settting (not alwais one want to match to z0) for autotune.
@@ -320,9 +366,10 @@ your option) any later version.
  
  Home address: via A. dei Corbizi 9  I-50127 Firenze Italy
  Phone: +39 055 410209
- e-mail: ik5nax@amsat.org
+ e-mail: ik5nax@amsat.org, lapo_pieri@virgilio.it
  website: www.qsl.net/ik5nax
 
 .SH SEE ALSO
 .BR spice3 (?),
-.BR gnucap (1)
+.BR gnucap (1),
+.BR ngspice (1)

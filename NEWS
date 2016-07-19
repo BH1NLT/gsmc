@@ -1,4 +1,6 @@
 20030901:
 	gsmc 1.0 -- First released version (based on xsmc v1.0)
-20040414:
-	gsmc 1.1 -- Postscript print added by JVDH
+20040728:
+	gsmc 1.1 -- Postscript print added (mainly by JVDH), save and load
+		    jobs, autotune (very primitive), frequency adj
+
