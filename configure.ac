@@ -2,9 +2,9 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.57)
-AC_INIT(gsmc, 1.2, ik5nax@radioteknos.it)
+AC_INIT(gsmc, 1.0, ik5nax@amsat.org)
 AC_CONFIG_SRCDIR([calc.c])
-AM_INIT_AUTOMAKE(gsmc, 1.2, ik5nax@radioteknos.it)
+AM_INIT_AUTOMAKE
 
 # Checks for programs.
 #AM_PROG_CC_C_O

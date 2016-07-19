@@ -1,7 +1,7 @@
 /*
  *   GSMC - A GTK Smith Chart Calulator for RF impedance matching
  * 
- *	(c) by Lapo Pieri IK5NAX  2003-2004,
+ *	(c) by Lapo Pieri IK5NAX  2003-2016,
  *          and Johannes van der Horst
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,7 @@
   ---------------------------------------------------------------------------*/
 #define NEL 32              /* Max number of network elements (???) */
 #define QZ 0.05             /* Quasi-Zero: to draw arc as lines */
-#define __VERSION "1.1"     /* Current version */
+#define __VERSION "1.2"     /* Current version */
 
 #define SPTYPE_UNDEF 0
 #define SPTYPE_Z 1
@@ -112,4 +112,4 @@ gint mdw_expose_event(GtkWidget *, GdkEventExpose *, gpointer),
 
 void writespice(char *);
 void removene(void);
-
+void loadgw(char *b), savegw(char *b);

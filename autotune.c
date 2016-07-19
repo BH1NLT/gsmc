@@ -1,7 +1,7 @@
 /*
  *   GSMC - A GTK Smith Chart Calulator for RF impedance matching
  * 
- *	(c) by Lapo Pieri IK5NAX  2003-2004,
+ *	(c) by Lapo Pieri IK5NAX  2003-2016,
  *          and Johannes van der Horst
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -27,9 +27,11 @@
 #include <gdk/gdk.h>
 #include <stdio.h>
 #include <math.h>
-#include "main.h"
-#include "autotune.h"
 #include <unistd.h>
+#include "main.h"
+#include "calc.h"
+#include "draw.h"
+#include "autotune.h"
 
 
 extern SMCDATA smcdata;

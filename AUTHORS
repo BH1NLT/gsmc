@@ -5,15 +5,14 @@ gsmc has been developed by
 	I-50142 FIRENZE (ITALY)
 
 	Phone +39 055 706881
-	ik5nax@amsat.org
-	ik5nax@virgilio.it
+	ik5nax<REMOVETHIS>AT<REMOVETHIS>radioteknos.it
 
 
 -	Johannes van der Horst
-	jvdhorst@cs.sun.ac.za	
+	jvdhorst<REMOVETHIS>AT<REMOVETHIS>cs.sun.ac.za	
 
 and thanks to:
 
--   	???
+-       Thomas Beierlein <tomjbe <AT> gentoo <DOT> org>
 
 	for submitting patch for new version of autoconf/automake

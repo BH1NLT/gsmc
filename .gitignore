@@ -2,6 +2,9 @@
 *~
 *.d
 .deps
-autom4te.cache
+autom4te.cache/
 config.status
+Makefile.in
+aclocal.m4
+configure
 gsmc
