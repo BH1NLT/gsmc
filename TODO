@@ -1,0 +1,19 @@
+- debian package
+- transmission line specified in meter and with attenuation
+
+Nella stampa:
+- linea per prendere le misure
+- levare le costanti fisse e usare psdim
+- impedenza dei vari punti intermedi
+- data (anche sul .gdt)
+- descrizione del circuito e valori comuni (z0, f0...)
+- nome del file sorgente
+- scelta (automatica) ps, eps
+- scelta formato del foglio
+- introduzione commento da aggiungere al foglio
+poi...
+- scelta di quanto fitta di linee debba essere la carta
+
+Patchs and mods are welcome!
+
+Lapo

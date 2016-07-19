@@ -1,0 +1,328 @@
+.TH GSMC 1 "SEPTEMBER 2003" Linux "User Manuals"
+.SH NAME
+gsmc \- A GTK Smith Chart Calulator for RF impedance matching
+
+
+.SH SYNOPSIS
+.B gsmc
+
+.SH DESCRIPTION
+.B gsmc
+is a GTK application that allow to do all the calculation usually done
+on a Smith Chart.
+It permits to make calculation for network composed by resistor,
+capacitor, inductance, and trasmission line (also as stub).
+Network topology is limitated to series, parallel and as trasmissive
+for trasmission line. No series connection are allowed in parallel
+branch, neither parallel connection in series branch.
+Trasmission line can be placed as quadrupole or as a parallel or
+series stub, either opened or shorted at the other end.
+
+Calculation procedure starts with setting the initial impedance to be
+matched, next network elements are added and tuned to obtain the
+desidered impedance value.
+
+The network so obtained can be saved in spice format for other analisys.
+
+The initial (start) impedance is thought as "the load" so when
+adding a trasmission line placed as a quadrupole rotation is
+clockwise, going "toward generator"; generator is placed after the
+last network element, as can be seen from spice output.
+
+
+.SH OPTIONS
+.TP
+None
+
+
+.SH INTERACTIVE COMMANDS
+.B gsmc
+is a menu based GTK application with as much as possible accelerators
+and mnemonics. Nearly all the command can to be issued as a single
+keystroke or keystroke with modifiers. This is, in the author's
+opinion, the preferable way for very specialistic programs that has to
+be used extensively.
+
+.IP Ctrl+q
+Quit the program.
+
+.IP Ctrl+1
+Toggle visualization of impedance (Z) circle
+
+.IP Ctrl+2
+Toggle visualization of admittance (Y) circle
+
+.IP Ctrl+3
+Toggle visualization of reflection coefficient (RHO) circle
+
+.IP Ctrl+4
+Toggle visualization of constant Q circle
+
+.IP s
+Set start point: can be entered as impedance, admittance or reflection
+coefficient
+
+.IP "Ctrl+0 (zero)"
+Set characteristic impedance z0
+
+.IP f
+Set frequency (f0)
+
+.IP r
+Add a resistor
+
+.IP l
+Add an inductor
+
+.IP c
+Add a capacitor
+
+.IP t
+Add a transmission line or stub
+
+.IP Shift+r
+Insert a resistor before the highlighted element
+
+.IP Shift+l
+Insert an inductor before the highlighted element
+
+.IP Shift+c
+Insert a capacitor before the highlighted element
+
+.IP Shift+t
+Insert a transmission line or stub before the highlighted element
+
+.IP d
+Delete the currently highligthed element
+
+.IP "Shift+Curs Up"
+Highlight previous element
+
+.IP "Shift+Curs Down"
+Highlight next element
+
+.IP "Shift+Curs Left"
+Decrease the first field of currently highlighted element
+
+.IP "Shift+Curs Rigth"
+Increase the first field of currently highlighted element
+
+.IP "Mod+Curs Left"
+Decrease the second field of currently highlighted element
+
+.IP "Mod+Curs Rigth"
+Increase the second field of currently highlighted element
+
+.IP "Mod+Curs Up"
+Increase the tuning step
+
+.IP "Mod+Curs Down"
+Decrease the tuning step
+
+.IP "Ctrl+w"
+Write network file in spice format
+
+.IP "Ctrl+n"
+Restart for a new calculation with a clean chart
+
+.IP =
+Change first field of currently highlighted element
+
+.IP "Mod+="
+Change second field of currently highlighted element
+
+
+Check online keystroke for an updated list of commands.
+
+.RE
+.B "DIALOG WIN"
+
+For operation that requires data entry a widget is created; it is
+composed by an text entry field and optionaly some radio button to
+chose the format of data entry.
+
+The format for data entry can be a single number, or a more complex
+string. First of all every number can be supplyed using standar prefix
+for unit of measure i.e.:
+.RS
+.IP a
+(atto) 1e-18
+.IP f 
+(femto) 1e-15
+.IP p 
+(pico) 1e-12
+.IP n 
+(nano) 1e-9
+.IP u 
+(micro) 1e-6
+.IP m 
+(milli) 1e-3
+.IP k 
+(kilo) 1e3
+.IP M 
+(mega) 1e6
+.IP G 
+(giga) 1e9
+.IP T 
+(tera) 1e12
+.RE
+Note that for spice output format mega is written as MEG instead of M,
+that will be otherwise recognized by spice as milli.
+Unit of measure are not allowed to be in the text entered.
+
+Where a complex number is required both the rectangular and the polar
+format are recognized: the former can be supplied as '12.3-j456m'
+while the latter can be supplied as '34.2 145' meaning a modulus of
+34.2 with a phase of 145 degrees. If the complex number is purely
+immaginary only something like 'j82' can be supplied, while if
+immaginary part is zero a single number can be given. Immaginary operator
+can be issued as 'i' as well as 'j'.
+
+.SH DATA PRESENTATION
+The single window of
+.B gsmc
+is divided in four parts:
+.TP
+.BI \-
+The Smith chart itself in the upper left portion, where arcs and
+constant circle are drawn.
+
+.TP
+.BI \-
+The vertical bar on the rigth of the Smith chart, where initial, final
+and cursor impedance are presented togheter general data.
+
+.TP
+.BI \-
+The horizontal bar on the bottom of Smith chart where the network
+element are listed.
+
+.TP
+.BI \-
+The portion in the lower right portion, for future use...
+
+
+.SH EXAMPLE OF USE
+Let's try a simple example to understand how
+.B xsmc
+work. Suppose to have a load of 10-j35ohm to be matched to 50+j0ohm at
+an operating frequency of 15.5MHz and we can use only concentrated
+reactive elements, i.e. inductances and capacitors.
+
+So start with setting operating frequency: press 'f' and a dialog win
+will appear. Type in the string '15.5M' and then press enter. Now in the
+vertical bar the frequency entered is displayed.
+
+Next set the start point impedance: press 's' and a dialog win will
+appear with the title "Start Point"; select the format for start point
+either clicking the "Z" radio buttono or using the menmonic via Mod+Z.
+Now the impedance can be entered as the string '10-j35' followed by
+enter. The starting point is now displayed as a small circle.
+
+
+The network has now to be constructed: let start with a series
+inductance of 800nH, so press 'l' and next introduce the value as
+'800n', be sure that "Series" radio button is selected before pressing
+enter. TAB and Shift+TAB is usefull to move across items in dialog win
+without leave hands from keyboard.
+This value is really too large, use Shft+Left cursor to reduce a
+bit. Up to where? Let's help you displaing the admittance constant
+circles pressing "Ctrl+2", the arc should arrive to the G=1 circle
+(also called the mirror circle), it's arround 546nH.
+
+Now add a capacitor in parallel connection, saying of 200pF: press 'c'
+and insert the string '200p' and select Parallel either with mouse or
+with "Mod+p". Now the admittance circles may confuse, remove it by
+pressing "Ctrl+2" again. The value of 200pF is too small, enlarge it
+by pressing Shift+Left cursor up to get the end point near to the
+chart's center. The point reached with 429pF has nearly zero imaginary
+but is 43ohm of real part instead of 50ohm.
+
+So back to the inductance and try to modify it, with Shift+Cursor up
+move to the first component and then try to change the inductance value by
+pressing cursor left and right. The changes are too large and 50+j0
+cannot be reached. So press "Mod+Cursor down" and the "tunestep" value shown
+in the vertical bar is reduced from 10% to 5%, try again to use Shift+Curors
+left and right. It feel better. Now do the same on the capacitor,
+moving to it by pressing cursor down and than adjusting value as for
+the inductance.
+
+Final values should be arround 568nH and 408pF. Now you want to see
+what appen using the closest standard commercial values, that is 560nH
+and 390pF in the E12 series. Select (with Shift+Cursor Up), if needed, the
+inductance and then press '=', the dialog window appear (middle line
+is unused) and the string '560n s' has to be introduced. Next move to
+capacitor (Shift+Curs Down) and pressing '=' here insert '390p p'. The
+final result is of SWR=1.14, if it's enough for you...
+
+Moving the mouse to the point where the two arcs ends you can see that
+the point has an impedance of about 10+j20ohm.
+
+Trasmission line and resistor can be used similary refer to the
+section INTERACTIVE COMMANDS for knowing how they can be placed.
+The major difference with transmission line is that they have two
+parameter, the electrical lenght and the caracteristic impedance: the
+former can be adjusted with Shift+Cursor left/rigth as for resistor,
+inductance and capacitor; the latter can be adjusted with Mod+cursor
+left/right.
+
+Now the network can be saved pressing Ctrl+w: actually only spice format
+is supported. The file so generated can be now analized with a spice
+simulator or
+.B gnucap
+; maybe you are interested in simulating it sweeping arround 15.5MHz,
+so modify the line
+
+	.ac lin 1  15.50MEG  15.50MEG
+
+in 
+
+	.ac lin 51  10MEG  30MEG
+
+and run spice or
+.B gnucap
+.
+
+.SH FILES
+.B gsmc
+don't use special configuration file, a gtkrc file is supplied and can
+be tuned to user preferences; if present it must be in /root/.gsmc/gtkrc.
+File describing the network currently analized can be generated, it's
+only needed that a minimum file permission is allowed, if not the
+program will work but data could not be saved.
+
+.SH LIMITATIONS
+Porting can be very very difficult, since all is based on X windows
+programming and GTK library, but for other platform a plenty of
+similar program are available, free and good one too.
+
+.SH BUGS
+Help me to find.
+
+.SH TODO
+
+.B \(bu
+Target settting (not alwais one want to match to z0) for autotune.
+
+.B \(bu
+Auxiliary window for error reporting instead of stderr.
+
+
+.SH COPYING
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+
+.SH AUTHOR
+ Lapo Pieri  (IK5NAX)
+ 
+ Home address: via A. dei Corbizi 9  I-50127 Firenze Italy
+ Phone: +39 055 410209
+ e-mail: ik5nax@amsat.org
+ website: www.qsl.net/ik5nax
+
+.SH SEE ALSO
+.BR spice3 (?),
+.BR gnucap (1)

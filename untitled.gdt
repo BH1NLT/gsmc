@@ -1,0 +1,12 @@
+GSMC Data File /work/gsmc-1.0-dev/untitled.gdt on Thu Jul 22 22:26:24 2004
+
+z0: 50
+f0: 2e+07
+StartPoint: 1 10 -30 0 0 0 0 -0.333333 -0.666667
+Elements: 4 1
+0 0 0 0 0
+6c 5.06349e-07 0 0 73
+63 4.05474e-10 0 0 70
+6c 4.75733e-07 0 0 73
+63 2.68897e-10 0 0 70
+GSMC Data File - end

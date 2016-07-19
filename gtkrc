@@ -1,0 +1,9 @@
+style "default"
+{
+  bg[NORMAL]={0.7, 0.8, 0.8}
+  font="-adobe-helvetica-medium-r-normal--*-75-*-*-*-*-*-*"
+
+}
+
+widget_class "*" style "default"
+
