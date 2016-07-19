@@ -1,0 +1,7 @@
+*.o
+*~
+*.d
+.deps
+autom4te.cache
+config.status
+gsmc

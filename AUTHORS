@@ -1,13 +1,19 @@
 gsmc has been developed by
 
 -	Lapo Pieri
-	via A. dei Corbizi, 9
-	I-50127 FIRENZE (ITALY)
+	via delle Ortensie, 22
+	I-50142 FIRENZE (ITALY)
 
-	Phone +39 055 410209
+	Phone +39 055 706881
 	ik5nax@amsat.org
-	lapo_pieri@virgilio.it
+	ik5nax@virgilio.it
 
 
 -	Johannes van der Horst
 	jvdhorst@cs.sun.ac.za	
+
+and thanks to:
+
+-   	???
+
+	for submitting patch for new version of autoconf/automake

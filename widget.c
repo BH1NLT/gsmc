@@ -150,10 +150,10 @@ void help_about(GtkWidget *widget __attribute__((unused)),
 
   about=gtk_dialog_new();
   label=gtk_label_new("\n GSMC - A Smith Chart Calculator\n" \
-		      "Version 1.1 - Apr. 2004\n\n\n" \
-		      "(c) 2003-2004 by Lapo Pieri\n" \
+		      "Version 1.2 - Apr. 2013\n\n\n" \
+		      "(c) 2003-2013 by Lapo Pieri\n" \
 		      " ik5nax@amsat.org\n" \
-		      " lapo_pieri@virgilio.it\n\n" \
+		      " ik5nax@radioteknos.it\n\n" \
 		      " and\n\n" \
 		      " Johannes van der Horst\n" \
 		      " jvdhorst@cs.sun.ac.za\n"\
@@ -459,7 +459,7 @@ void add_resistance_activate(GtkWidget *widget __attribute__((unused)),
 
   gtk_widget_grab_focus(etb);
 
-  /* Rivedere */
+  /* to be revised (???) */
   gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(b1), TRUE);
   set_series();
 

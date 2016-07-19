@@ -32,6 +32,7 @@
 #include <unistd.h>
 #include <math.h>
 #include <time.h>
+#include <string.h>
 #include "main.h"
 #include "widget.h"
 #include "calc.h"
@@ -91,7 +92,7 @@ int main(int argc, char **argv) {
     gtk_rc_parse("/root/.gsmc/gtkrc");
   }
   topwindow=gtk_window_new(GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_usize(GTK_WIDGET(topwindow), 600, 550);
+  gtk_widget_set_usize(GTK_WIDGET(topwindow), 600, 600);
   gtk_widget_set_name(topwindow, "topwindow");
   gtk_window_set_title(GTK_WINDOW(topwindow), "GSMC - Smith Chart Calculator");
   gtk_signal_connect(GTK_OBJECT(topwindow), "delete_event",
@@ -115,9 +116,9 @@ int main(int argc, char **argv) {
      |                          |               |
     2+--------------------------+---------------+
      |                          |               |
-     |                          |               |
-     |    Circuit description   |   Entry       |
-     |                          |   dialog      |
+     |                          |    (spare)    |
+     |    Circuit description   | maybe entry   |
+     |                          | dialog???     |
      |                          |               |
      |                          |               |
     3+--------------------------+---------------+
@@ -148,7 +149,7 @@ int main(int argc, char **argv) {
   tdscw=gtk_scrolled_window_new(NULL, NULL);
   gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(tdscw),
 				 GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);
-  gtk_widget_set_usize(GTK_WIDGET(tdscw), 400, 90);
+  gtk_widget_set_usize(GTK_WIDGET(tdscw), 400, 140);
 
   txtcircbuff=gtk_text_buffer_new(NULL);
   gtk_text_buffer_set_text(txtcircbuff, "", 0);
@@ -238,7 +239,7 @@ gint mdw_configure_event(GtkWidget *widget,
   if(widget->allocation.height<scdim)
     scdim=widget->allocation.height;
 
-  mainpixmap=gdk_pixmap_new(widget->window, scdim, scdim, -1);
+  mainpixmap=gdk_pixmap_new(widget->window, scdim+1, scdim+1, -1);
   gdk_draw_rectangle(mainpixmap,
 		     widget->style->white_gc,
 		     TRUE,
