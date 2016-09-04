@@ -2,11 +2,10 @@
  *   GSMC - A GTK Smith Chart Calulator for RF impedance matching
  * 
  *	(c) by Lapo Pieri IK5NAX  2003-2016,
- *          and Johannes van der Horst
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
+ *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
  *
  *   This program is distributed in the hope that it will be useful,
@@ -18,9 +17,12 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
- *  Send bugs reports, comments, critique, etc, to ik5nax@amsat.org or
- *  lapo_pieri@virgilio.it
+ *  Send bugs reports, comments, critique, etc, to
+ *
+ *        lapo_CHANGE_THIS_AT_CHANGE_THIS_radioteknos.it
+ *        ik5nax_CHANGE_THIS_AT_CHANGE_THIS_radioteknos.it
  */
+
 
 #include <stdio.h>
 #include <unistd.h>
@@ -1164,14 +1166,14 @@ gint etb_callback(GtkWidget *widget __attribute__((unused)),
 
 gint etbt_callback(GtkWidget *widget __attribute__((unused)),
 		   GtkWidget *entry __attribute__((unused))) {
-  gchar *entry_text1, *entry_text2, *entry_text3;
+  gchar *entry_text1, *entry_text2;
   char c, temp;
   float val0, val1, val2;
   int i;
 
   entry_text1=(gchar*)gtk_entry_get_text(GTK_ENTRY(etb1));
   entry_text2=(gchar*)gtk_entry_get_text(GTK_ENTRY(etb2));
-  //  entry_text3=(gchar*)gtk_entry_get_text(GTK_ENTRY(etb3));
+  /* entry_text3=(gchar*)gtk_entry_get_text(GTK_ENTRY(etb3)); */
   if((strlen(entry_text1)!=0) && (strlen(entry_text2)!=0)){
 
     switch(entry_text_type){
@@ -1247,7 +1249,7 @@ gint etbt_callback(GtkWidget *widget __attribute__((unused)),
       break;
       
     case ETTNULL:
-    default: printf("%s\t%s\t%s\n", entry_text1, entry_text2, entry_text3);
+    default: printf("%s\t%s\n", entry_text1, entry_text2);
     }
     
     recalc(); showtextstat(); showcircdesc();
@@ -1345,25 +1347,33 @@ void select_next(GtkWidget *widget __attribute__((unused)),
 
 void decrease_tunestep(GtkWidget *widget __attribute__((unused)),
 		       gpointer user_data __attribute__((unused))){
-  if(tsidx>0) tsidx--; tunestep=tunesteptab[tsidx];
+  if(tsidx>0)
+    tsidx--;
+  tunestep=tunesteptab[tsidx];
   showtextstat();
 }
 
 void increase_tunestep(GtkWidget *widget __attribute__((unused)),
 		       gpointer user_data __attribute__((unused))){
-  if(tsidx<5) tsidx++; tunestep=tunesteptab[tsidx]; 
+  if(tsidx<5)
+    tsidx++;
+  tunestep=tunesteptab[tsidx]; 
   showtextstat();
 }
 
 void decrease_freqstep(GtkWidget *widget __attribute__((unused)),
 		       gpointer user_data __attribute__((unused))){
-  if(fsidx>0) fsidx--; freqstep=freqsteptab[fsidx];
+  if(fsidx>0)
+    fsidx--;
+  freqstep=freqsteptab[fsidx];
   showtextstat();
 }
 
 void increase_freqstep(GtkWidget *widget __attribute__((unused)),
 		       gpointer user_data __attribute__((unused))){
-  if(fsidx<6) fsidx++; freqstep=freqsteptab[fsidx]; 
+  if(fsidx<6)
+    fsidx++;
+  freqstep=freqsteptab[fsidx]; 
   showtextstat();
 }
 

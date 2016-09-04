@@ -1,0 +1,11 @@
+                            gsmc TODO list
+                            ==============
+
+- fix code insecurity
+- transmission line specified in meter and with attenuation
+- improve autotune (with Q control)
+- add ideal transformer
+- add mutual inductor
+- (?) add ser/par LC block
+- other file format (spice? qucs?)
+- update manpage

@@ -357,19 +357,20 @@ Auxiliary window for error reporting instead of stderr.
 .SH COPYING
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or (at
+the Free Software Foundation; either version 3 of the License, or (at
 your option) any later version.
 
 
 .SH AUTHOR
  Lapo Pieri  (IK5NAX)
  
- Home address: via A. dei Corbizi 9  I-50127 Firenze Italy
- Phone: +39 055 410209
- e-mail: ik5nax@amsat.org, lapo_pieri@virgilio.it
- website: www.qsl.net/ik5nax
+ Home address: via delle Ortensie, 22  I-50142 Firenze Italy
+ Phone: +39 055 706881
+ e-mail: ik5nax@radioteknos.it
+ website: www.qsl.net/ik5nax ; www.radioteknos.it
 
 .SH SEE ALSO
 .BR spice3 (?),
 .BR gnucap (1),
-.BR ngspice (1)
+.BR ngspice (1),
+.BR qucs (1)

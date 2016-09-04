@@ -2,11 +2,10 @@
  *   GSMC - A GTK Smith Chart Calulator for RF impedance matching
  * 
  *	(c) by Lapo Pieri IK5NAX  2003-2016,
- *          and Johannes van der Horst
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
+ *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
  *
  *   This program is distributed in the hope that it will be useful,
@@ -18,8 +17,10 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
- *  Send bugs reports, comments, critique, etc, to ik5nax@amsat.org or
- *  lapo_pieri@virgilio.it
+ *  Send bugs reports, comments, critique, etc, to
+ *
+ *        lapo_CHANGE_THIS_AT_CHANGE_THIS_radioteknos.it
+ *        ik5nax_CHANGE_THIS_AT_CHANGE_THIS_radioteknos.it
  */
 
 
@@ -436,8 +437,7 @@ void savegw(char *b) {
 
 void loadgw(char *b) {
   FILE *gwd;
-  char buff[101], c;
-  float v;
+  char buff[101];
   int i;
 
   if((gwd=fopen(b, "r"))==NULL) {
@@ -476,14 +476,14 @@ void loadgw(char *b) {
   }
 
   for(i=0; i<=smcdata.ne; i++)
-    if(fscanf(gwd, "%x %g %g %g %x", &smcdata.ELtype[i], &smcdata.ELval0[i],
-	       &smcdata.ELval1[i], &smcdata.ELval2[i], &smcdata.ELplace[i])!=5)
-      {
+    if(fscanf(gwd, "%x %g %g %g %x",
+	      (int*)&smcdata.ELtype[i], &smcdata.ELval0[i],
+	       &smcdata.ELval1[i], &smcdata.ELval2[i],
+	      (int*)&smcdata.ELplace[i])!=5){
       fprintf(stderr, "Error reading file %s\n", b);
       restart(NULL, NULL); return;
-      }
-
+    }
+  
   fclose(gwd);
   recalc(); drawchart(); showtextstat(); showcircdesc();
 }
-

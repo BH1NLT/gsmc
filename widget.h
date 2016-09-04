@@ -2,11 +2,10 @@
  *   GSMC - A GTK Smith Chart Calulator for RF impedance matching
  * 
  *	(c) by Lapo Pieri IK5NAX  2003-2016,
- *          and Johannes van der Horst
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
+ *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
  *
  *   This program is distributed in the hope that it will be useful,
@@ -18,9 +17,12 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
- *  Send bugs reports, comments, critique, etc, to ik5nax@amsat.org or
- *  lapo_pieri@virgilio.it
+ *  Send bugs reports, comments, critique, etc, to
+ *
+ *        lapo_CHANGE_THIS_AT_CHANGE_THIS_radioteknos.it
+ *        ik5nax_CHANGE_THIS_AT_CHANGE_THIS_radioteknos.it
  */
+
 
 #define ETTNULL 0
 #define ETTSP   1

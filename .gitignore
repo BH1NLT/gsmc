@@ -4,7 +4,10 @@
 .deps
 autom4te.cache/
 config.status
+config.log
 Makefile.in
+Makefile
 aclocal.m4
 configure
 gsmc
+gsmc.1

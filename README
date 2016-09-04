@@ -1,25 +1,25 @@
 				gsmc
 				====
 
-	A GTK Smith Chart Calulator for RF impedance matching
+	A GTK Smith Chart Calculator for RF impedance matching
 
 gsmc is a simple smith chart calculator used for automatic calculation in
 radio frequency impedance matching.
-Many good program for doing this job are available for non free OS or are non
-free themself; so getting what I retain the best characteristic from each of
+Many good program doing this job are available for non free OS or are non
+free themself; so getting what I retain the best features from each of
 thes that I've seen in the past I decided to write one and release it under 
 GNU/GPL license.
 
-Program is under development: help is needed and welcomed; in my hope it 
+gsmc is under development: help is needed and welcomed; in my hope it 
 will be the first part of a suite of rf designing tool all to be released
-under GPL. Write me if you are interested; my experience in write software
-is limitated, neither I have knolwedge in building up large and distributed
+under GPL. Write me if you are interested; my experience in coding is
+modest, neither I have knolwedge in building up large and distributed
 software project.
 
 Prior to gsmc I wrote xsmc a very similar program that run under X and use
 direct Xlib call, his aspect is not particular user friendly.
 
-For using gsmc reading the manual (man gsmc) should be enough...
+To use gsmc read the manual (man gsmc), should be enough...
 
 Have nice matching!
 

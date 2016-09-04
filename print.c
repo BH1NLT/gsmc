@@ -2,11 +2,10 @@
  *   GSMC - A GTK Smith Chart Calulator for RF impedance matching
  * 
  *	(c) by Lapo Pieri IK5NAX  2003-2016,
- *          and Johannes van der Horst
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
+ *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
  *
  *   This program is distributed in the hope that it will be useful,
@@ -18,9 +17,12 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
- *  Send bugs reports, comments, critique, etc, to ik5nax@amsat.org or
- *  lapo_pieri@virgilio.it
+ *  Send bugs reports, comments, critique, etc, to
+ *
+ *        lapo_CHANGE_THIS_AT_CHANGE_THIS_radioteknos.it
+ *        ik5nax_CHANGE_THIS_AT_CHANGE_THIS_radioteknos.it
  */
+
 
 #include <stdio.h>
 #include <math.h>
@@ -41,9 +43,6 @@ extern int Zcirc, Ycirc, RHOcirc, Qcirc;
 float psdim=510.236; /* chart diameter=180mm */
 
 void psdrawchart(FILE *f){
-  int i, n, step;
-  float R, X, G, B, sa, ea, a;
-  float rer, imr, rer1, imr1, rer2, imr2;
 
   fprintf(f, "\n%%Chart border and j=0 line\nnewpath\n0 setlinewidth\n");
   psdrawArc(f, psdim/2, psdim/2, psdim, psdim, 0, 360);
@@ -145,13 +144,13 @@ void psdrawRk(FILE* f, float R) {
 
 void psdrawXk(FILE* f, float X){
   float xc, yc, r;
-  float x, y, w, h;
+  float x, y, h;
 
   if(X!=0.) {
     xc=1.; yc=1./X; r=1./fabs(X);
     
     x=(int)((xc+1.)/2.*psdim); y=(int)((1-yc)/2.*psdim);
-    w=(int)(r*psdim); h=(int)(r*psdim);
+    h=(int)(r*psdim);
     if(X<0.){
       fprintf(f, "%.2f %.2f moveto\n", (float)psdim, (float)psdim/2.);
       fprintf(f, "%.2f %.2f %.2f %.2f %.2f arc\n",
@@ -189,13 +188,13 @@ void psdrawGk(FILE* f, float G){
 
 void psdrawBk(FILE* f,float B) {
   float xc, yc, r;
-  float x, y, w, h;
+  float x, y, h;
 
   if(B!=0.) {
     xc=-1.; yc=1./B; r=1./fabs(B);
     
     x=(int)((xc+1.)/2.*psdim); y=(int)((1-yc)/2.*psdim);
-    w=(int)(r*psdim); h=(int)(r*psdim);
+    h=(int)(r*psdim);
     if(B<0.){
       fprintf(f, "%.2f %.2f moveto\n", 0., (float)psdim/2.);
       fprintf(f, "%.2f %.2f %.2f %.2f %.2f arcn\n",
@@ -302,8 +301,8 @@ void psdrawB(FILE* f,float B, float sa, float al) {
     xc=sa; x=(int)((xc+1.)/2.*psdim);
     xc=al; w=(int)((xc+1.)/2.*psdim);
     
-    fprintf(f,"%.2f %.2f moveto\n",x,y);
-    fprintf(f,"%.2f %.2f lineto\n",w,h);
+    fprintf(f,"%.2f %.2f moveto\n", (float)x, (float)y);
+    fprintf(f,"%.2f %.2f lineto\n", (float)w, (float)h);
   }
 }
 
@@ -337,12 +336,11 @@ void psdrawSP(FILE *f, float rerho, float imrho) {
 
 
 void writePS(char* b){
-  FILE *psf, *templ;
+  FILE *psf;
   int i, n, step, eps;
   float R, X, G, B, sa, ea, a, x1, y1;
   float rer, imr, rer1, imr1, rer2, imr2;
-  int x,y;
-  char buff[256], buff2[256], fname[80];
+  char buff[256], buff2[256];
   time_t t;
 
   if((psf=fopen(b, "w"))==NULL) {
@@ -399,7 +397,10 @@ void writePS(char* b){
 	if(fabs(X)>QZ) {
 	  sa=thetaonX(smcdata.rerhoIP[i-1], smcdata.imrhoIP[i-1], X)*180/M_PI;
 	  ea=thetaonX(smcdata.rerhoIP[i], smcdata.imrhoIP[i], X)*180/M_PI;
-	  if(ea<0.) ea+=360; if(sa<0.) sa+=360;
+	  if(ea<0.)
+	    ea+=360;
+	  if(sa<0.)
+	    sa+=360;
 	  psdrawX(psf,X, sa, ea);
 	}
 	else
@@ -408,7 +409,10 @@ void writePS(char* b){
       else if(smcdata.ELtype[i]=='l' || smcdata.ELtype[i]=='c') {
 	sa=thetaonR(smcdata.rerhoIP[i-1], smcdata.imrhoIP[i-1], R)*180/M_PI;
 	ea=thetaonR(smcdata.rerhoIP[i], smcdata.imrhoIP[i], R)*180/M_PI;
-	if(ea<0.) ea+=360; if(sa<0.) sa+=360;
+	if(ea<0.)
+	  ea+=360;
+	if(sa<0.)
+	  sa+=360;
 	psdrawR(psf, R, sa, ea);
       }
       break;
@@ -462,7 +466,10 @@ void writePS(char* b){
       rho2z(smcdata.rerhoIP[i], smcdata.imrhoIP[i], &R, &X);
       sa=thetaonR(smcdata.rerhoIP[i-1], smcdata.imrhoIP[i-1], R)*180/M_PI;
       ea=thetaonR(smcdata.rerhoIP[i], smcdata.imrhoIP[i], R)*180/M_PI;
-      if(ea<0.) ea+=360; if(sa<0.) sa+=360;
+      if(ea<0.)
+	ea+=360;
+      if(sa<0.)
+	sa+=360;
       psdrawR(psf,R, sa, ea);
       break;
     default:
@@ -533,11 +540,11 @@ void pscircdesc(FILE *f) {
   fprintf(f, "%.2f %.2f moveto\n%.2f %.2f rlineto\n",
 	  0., -36., (float)psdim, 0.);
   fprintf(f, "%.2f %.2f moveto\n%.2f %.2f rlineto\n",
-	  0., -36., 0., +10);
+	  0., -36., 0., +10.);
   fprintf(f, "%.2f %.2f moveto\n%.2f %.2f rlineto\n",
-	  (float)psdim/2., -36., 0., +10);
+	  (float)psdim/2., -36., 0., +10.);
   fprintf(f, "%.2f %.2f moveto\n%.2f %.2f rlineto\n",
-	  (float)psdim, -36., 0., +10);
+	  (float)psdim, -36., 0., +10.);
 
   float2prefs(smcdata.z0, b, 0);
   fprintf(f, "%.2f %.2f moveto\n(z0= %s) show\n",

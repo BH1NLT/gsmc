@@ -2,11 +2,10 @@
  *   GSMC - A GTK Smith Chart Calulator for RF impedance matching
  * 
  *	(c) by Lapo Pieri IK5NAX  2003-2016,
- *          and Johannes van der Horst
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
+ *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
  *
  *   This program is distributed in the hope that it will be useful,
@@ -18,8 +17,10 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
- *  Send bugs reports, comments, critique, etc, to ik5nax@amsat.org or
- *  lapo_pieri@virgilio.it
+ *  Send bugs reports, comments, critique, etc, to
+ *
+ *        lapo_CHANGE_THIS_AT_CHANGE_THIS_radioteknos.it
+ *        ik5nax_CHANGE_THIS_AT_CHANGE_THIS_radioteknos.it
  */
 
 
@@ -270,7 +271,10 @@ void drawchart(void) {
 	 if(fabs(X)>QZ) {
 	   sa=thetaonX(smcdata.rerhoIP[i-1], smcdata.imrhoIP[i-1], X)*180/M_PI;
 	   ea=thetaonX(smcdata.rerhoIP[i], smcdata.imrhoIP[i], X)*180/M_PI;
-	   if(ea<0.) ea+=360; if(sa<0.) sa+=360;
+	   if(ea<0.)
+	     ea+=360;
+	   if(sa<0.)
+	     sa+=360;
 	   drawX(X, sa, ea-sa);
 	 }
 	 else
@@ -279,7 +283,10 @@ void drawchart(void) {
        else if(smcdata.ELtype[i]=='l' || smcdata.ELtype[i]=='c') {
 	 sa=thetaonR(smcdata.rerhoIP[i-1], smcdata.imrhoIP[i-1], R)*180/M_PI;
 	 ea=thetaonR(smcdata.rerhoIP[i], smcdata.imrhoIP[i], R)*180/M_PI;
-	 if(ea<0.) ea+=360; if(sa<0.) sa+=360;
+	 if(ea<0.)
+	   ea+=360;
+	 if(sa<0.)
+	   sa+=360;
 	 drawR(R, sa, ea-sa);
        }
        break;
@@ -333,7 +340,10 @@ void drawchart(void) {
        rho2z(smcdata.rerhoIP[i], smcdata.imrhoIP[i], &R, &X);
        sa=thetaonR(smcdata.rerhoIP[i-1], smcdata.imrhoIP[i-1], R)*180/M_PI;
        ea=thetaonR(smcdata.rerhoIP[i], smcdata.imrhoIP[i], R)*180/M_PI;
-       if(ea<0.) ea+=360; if(sa<0.) sa+=360;
+       if(ea<0.)
+	 ea+=360;
+       if(sa<0.)
+	 sa+=360;
        drawR(R, sa, ea-sa);
        break;
        
@@ -598,7 +608,7 @@ void showcircdesc(void) {
       else{
 	gtk_text_buffer_insert_with_tags(GTK_TEXT_BUFFER(txtcircbuff),
 					 &tep,
-					 t, -1, NULL);
+					 t, -1, NULL, NULL);
 	gtk_text_buffer_get_bounds(txtcircbuff, &dummy, &tep);
       }
 
