@@ -486,4 +486,5 @@ void loadgw(char *b) {
   
   fclose(gwd);
   recalc(); drawchart(); showtextstat(); showcircdesc();
+  gtk_widget_draw(scarea, NULL);
 }

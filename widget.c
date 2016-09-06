@@ -151,16 +151,18 @@ void help_about(GtkWidget *widget __attribute__((unused)),
 		gpointer user_data __attribute__((unused))) {
   GtkWidget *label, *button;
 
+#define ABTBUFFLEN 160
+  char abtbuff[ABTBUFFLEN+1];
+  
+  snprintf(abtbuff, ABTBUFFLEN,
+	   "\n GSMC - A Smith Chart Calculator\n"\
+	   "v%s - %s\n\n\n"\
+	   "(c) 2003-2016 by Lapo Pieri\n"\
+	   "ik5nax@radioteknos.it\n\n",
+	   __VERSION, __VERSION_DATE);
+
   about=gtk_dialog_new();
-  label=gtk_label_new("\n GSMC - A Smith Chart Calculator\n" \
-		      "Version 1.2 - Apr. 2013\n\n\n" \
-		      "(c) 2003-2016 by Lapo Pieri\n" \
-		      " ik5nax@amsat.org\n" \
-		      " ik5nax@radioteknos.it\n\n" \
-		      " and\n\n" \
-		      " Johannes van der Horst\n" \
-		      " jvdhorst@cs.sun.ac.za\n"\
-		      );
+  label=gtk_label_new(abtbuff);
   gtk_box_pack_start(GTK_BOX(GTK_DIALOG(about)->vbox), label, TRUE, TRUE, 0);
   button=gtk_button_new_from_stock(GTK_STOCK_OK);
   gtk_box_pack_start(GTK_BOX(GTK_DIALOG(about)->action_area), 
