@@ -31,11 +31,11 @@
 #include <gdk/gdk.h>
 #include <ctype.h>
 #include <time.h>
+#include "config.h"
 #include "main.h"
 #include "draw.h"
 #include "calc.h"
 #include "print.h"
-// jvdh 2004-3-30
 
 extern SMCDATA smcdata;
 extern int Zcirc, Ycirc, RHOcirc, Qcirc;

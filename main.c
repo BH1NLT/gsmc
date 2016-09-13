@@ -34,6 +34,7 @@
 #include <math.h>
 #include <time.h>
 #include <string.h>
+#include "config.h"
 #include "main.h"
 #include "widget.h"
 #include "calc.h"

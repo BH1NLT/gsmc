@@ -28,6 +28,7 @@
 #include <gdk/gdk.h>
 #include <stdio.h>
 #include <string.h>
+#include "config.h"
 #include "dataconv.h"
 #include "calc.h"
 

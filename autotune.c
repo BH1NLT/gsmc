@@ -29,6 +29,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <unistd.h>
+#include "config.h"
 #include "main.h"
 #include "calc.h"
 #include "draw.h"

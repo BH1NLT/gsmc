@@ -30,6 +30,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <ctype.h>
+#include "config.h"
 #include "main.h"
 #include "calc.h"
 #include "draw.h"

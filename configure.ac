@@ -1,8 +1,10 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
+AC_CONFIG_HEADERS([config.h])
 AC_PREREQ(2.57)
-AC_INIT(gsmc, 1.0, ik5nax@amsat.org)
+
+AC_INIT(gsmc, __VERSION, ik5nax@radioteknos.it)
 AC_CONFIG_SRCDIR([calc.c])
 AM_INIT_AUTOMAKE
 
@@ -24,5 +26,9 @@ AC_C_CONST
 
 # Checks for library functions.
 AC_CHECK_FUNCS([sqrt])
+
+AC_DEFINE(__VERSION, "1.2.1", "current version")
+AC_DEFINE(__VERSION_DATE, "06/09/2016", "current version date")
+
 AC_OUTPUT([Makefile gsmc.1])
 

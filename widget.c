@@ -32,6 +32,7 @@
 #include <fcntl.h>
 #include <math.h>
 #include <string.h>
+#include "config.h"
 #include "calc.h"
 #include "main.h"
 #include "dataconv.h"

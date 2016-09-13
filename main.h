@@ -29,8 +29,8 @@
   ---------------------------------------------------------------------------*/
 #define NEL 32              /* Max number of network elements (???) */
 #define QZ 0.05             /* Quasi-Zero: to draw arc as lines */
-#define __VERSION "1.2.1"   /* Current version */
-#define __VERSION_DATE "06/09/2016" /* version date */
+
+/* *version defs are in configure.ac */
 
 #define SPTYPE_UNDEF 0
 #define SPTYPE_Z 1

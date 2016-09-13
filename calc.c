@@ -28,6 +28,7 @@
 #include <gdk/gdk.h>
 #include <stdio.h>
 #include <math.h>
+#include "config.h"
 #include "main.h"
 #include "calc.h"
 

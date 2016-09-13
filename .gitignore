@@ -11,3 +11,4 @@ aclocal.m4
 configure
 gsmc
 gsmc.1
+stamp-h2
